@@ -4,6 +4,7 @@ import { Box, SimpleGrid, Image, Flex, chakra } from '@chakra-ui/react'
 import ImageWithText from '../components/ImageWithText';
 import Hero from '../components/Hero';
 import CallToAction from '../components/CallToAction';
+import ImageGrid from '../components/ImageGrid';
  
 import { ShopContext } from '../context/shopContext'
 import RichText from '../components/RichText';
@@ -107,6 +108,7 @@ const Home = () => {
         }
       </SimpleGrid>
       <CallToAction />
+      <ImageGrid />
       <RichText 
         heading="Treat Yourself."
       />
