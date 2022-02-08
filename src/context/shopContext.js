@@ -39,13 +39,24 @@ export class ShopProvider extends Component {
     })
   }
 
-  addItemtoCheckout = async () => {
+  addItemToCheckout = async (variantId, quantity) => {
+    const lineItemsToAdd = [
+        {
+            variantId: variantId,
+            quantity: parseInt(quantity, 10)
+        }
+    ]
+    const checkout = await client.checkout.addLineItems(this.state.checkout.id, lineItemsToAdd)
+    this.setState({ checkout: checkout })
 
+    this.openCart();
   }
 
   removeLineItem = async (lineItemIdsToRemove) => {
+    const checkout = await client.checkout.removeLineItems(this.state.checkout.id, lineItemIdsToRemove)
+    this.setState({ checkout: checkout })
+}
 
-  }
 
   fetchAllProducts = async () => {
     const products = await client.product.fetchAll();
@@ -61,9 +72,9 @@ export class ShopProvider extends Component {
 
   openCart = () => { this.setState({isCartOpen: true}) }
 
-  closeMenu = () => {}
+  closeMenu = () => { this.setState({isMenuOpen: false}) }
 
-  openMenu = () => {}
+  openMenu = () => { this.setState({isMenuOpen: true}) }
 
   render() {
 
@@ -73,7 +84,7 @@ export class ShopProvider extends Component {
                 ...this.state, 
                 fetchAllProducts: this.fetchAllProducts,
                 fetchProductWithHandle: this.fetchProductWithHandle,
-                addItemtoCheckout: this.addItemtoCheckout,
+                addItemToCheckout: this.addItemToCheckout,
                 removeLineItem: this.removeLineItem,
                 closeCart: this.closeCart,
                 openCart: this.openCart,
