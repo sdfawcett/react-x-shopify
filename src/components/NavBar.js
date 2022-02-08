@@ -9,7 +9,7 @@ const NavBar = () => {
   const { openCart, openMenu, checkout } = useContext(ShopContext)
   
   return (
-  <Flex backgroundColor="#FFA8E2" flexDir="row" alignItems="center" justifyContent="space-between" p="2rem">
+  <Flex backgroundColor="#2596be" flexDir="row" alignItems="center" justifyContent="space-between" p="2rem">
       <Icon fill="white" cursor="pointer" as={MdMenu} w={30} h={30}
         onClick={() => openMenu()}
       >Menu</Icon>

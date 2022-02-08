@@ -1,8 +1,9 @@
 import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom'
-import { Box, Grid, Text, Image } from '@chakra-ui/react'
+import { Box, SimpleGrid, Image, Flex, chakra } from '@chakra-ui/react'
 import ImageWithText from '../components/ImageWithText';
 import Hero from '../components/Hero';
+import CallToAction from '../components/CallToAction';
  
 import { ShopContext } from '../context/shopContext'
 import RichText from '../components/RichText';
@@ -24,23 +25,88 @@ const Home = () => {
         heading="The relaxation you've been waiting for."
         text="Our Bath Bombs guarantee a fun, relaxing, and colorful night"
       />
-      <Grid templateColumns="repeat(3, 1fr)">
-        {
+      <SimpleGrid columns={{md: 1, lg: 3}}>
+      {
             products.map(product => (
-                <Link to={`/products/${product.handle}`} key={product.id}>
-                    <Box _hover={{ opacity: '80%' }} textAlign="center" position="relative">
-                        <Image src={product.images[0].src} />
-                        <Text position="absolute" bottom="15%" w="100%" fontWeight="bold">
-                            {product.title}
-                        </Text>
-                        <Text position="absolute" bottom="5%" w="100%" color="gray.500">
-                            ${product.variants[0].price}
-                        </Text>
-                    </Box>
-                </Link>
-            ))
+                <Box>
+                    <Link to={`/products/${product.handle}`} key={product.id}>
+                        
+                        <Flex
+                            direction="column"
+                            justifyContent="center"
+                            alignItems="center"
+                            w="sm"
+                            mx="auto"
+                            mb="2rem"
+                        >
+                            <Box
+                            bg="gray.300"
+                            h={64}
+                            w="full"
+                            rounded="lg"
+                            shadow="md"
+                            bgSize="cover"
+                            bgPos="center"
+                            >
+                                <Image src={product.images[0].src} />
+                            </Box>
+
+                            <Box
+                            w={{ base: 56, md: 64 }}
+                            bg="gray.800"
+                            mt={-10}
+                            shadow="lg"
+                            rounded="lg"
+                            overflow="hidden"
+                            >
+                            <chakra.h3
+                                py={2}
+                                textAlign="center"
+                                fontWeight="bold"
+                                textTransform="uppercase"
+                                color="white"
+                                letterSpacing={1}
+                            >
+                                {product.title}
+                            </chakra.h3>
+
+                            <Flex
+                                alignItems="center"
+                                justifyContent="space-between"
+                                py={2}
+                                px={3}
+                                bg="gray.700"
+                            >
+                                <chakra.span
+                                fontWeight="bold"
+                                color="gray.200"
+                                >
+                                ${product.variants[0].price}
+                                </chakra.span>
+                                <chakra.button
+                                bg="#FF38BD"
+                                fontSize="xs"
+                                fontWeight="bold"
+                                color="white"
+                                px={2}
+                                py={1}
+                                rounded="lg"
+                                textTransform="uppercase"
+                                _hover={{ opacity:"70%" }}
+                                >
+                                View Item
+                                </chakra.button>
+                            </Flex>
+                            </Box>
+                        </Flex>
+                        
+                        
+                    </Link>
+                </Box>
+        ))
         }
-      </Grid>
+      </SimpleGrid>
+      <CallToAction />
       <RichText 
         heading="Treat Yourself."
       />
