@@ -12,8 +12,6 @@ const Home = () => {
       fetchAllProducts()
   }, [fetchAllProducts])
 
-  console.log(products)
-
   if (!products) return <div>Loading...</div>
 
   return (
