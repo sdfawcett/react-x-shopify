@@ -1,8 +1,9 @@
 import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom'
-import { Box, SimpleGrid, Image, Flex, chakra } from '@chakra-ui/react'
+import { Box, Button, Icon, LightMode, Stack, Text, SimpleGrid, Image, Flex, chakra } from '@chakra-ui/react'
 import ImageWithText from '../components/ImageWithText';
 import Hero from '../components/Hero';
+import { CollectionGrid } from '../components/CollectionGrid';
 import ImageGrid from '../components/ImageGrid';
 import BlogCardGrid from '../components/BlogCardGrid';
  
@@ -20,6 +21,7 @@ const Home = () => {
   if (!products) return <div>Loading...</div>
 
   return (
+  
   <Box>
       <Hero />
       <RichText 
@@ -107,6 +109,7 @@ const Home = () => {
         ))
         }
       </SimpleGrid>
+      <CollectionGrid />
       <RichText 
         heading="Treat Yourself."
       />
@@ -122,8 +125,9 @@ const Home = () => {
         text="I'm baby kale chips twee skateboard tattooed, DIY iPhone ugh mixtape tumeric unicorn narwhal. Iceland shoreditch authentic, sartorial vegan twee flannel banh mi bushwick retro farm-to-table single-origin coffee."
       />
       
-      <BlogCardGrid />
-      <ImageGrid />
+      
+      
+      
       
   </Box>
   )

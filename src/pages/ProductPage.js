@@ -164,7 +164,7 @@ const ProductPage = () => {
               </Button>
             </Box>
           </HStack>
-          <Button colorScheme="blue" size="lg">
+          <Button colorScheme="blue" size="lg" onClick={() => addItemToCheckout(product.variants[0].id, 1)}>
             Add to cart
           </Button>
         </Stack>

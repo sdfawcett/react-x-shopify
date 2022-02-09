@@ -6,12 +6,14 @@ import Footer from './components/Footer'
 
 import Home from './pages/Home'
 import ProductPage from './pages/ProductPage';
+import SaleCountdown from './components/SaleCountdown';
 
 
 function App() {
   return (
     <div className="App">
       <Router>
+        <SaleCountdown />
         <NavBar />
         <Cart />
         <NavMenu />
