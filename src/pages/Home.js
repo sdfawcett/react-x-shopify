@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import { Box, SimpleGrid, Image, Flex, chakra } from '@chakra-ui/react'
 import ImageWithText from '../components/ImageWithText';
 import Hero from '../components/Hero';
-import CallToAction from '../components/CallToAction';
 import ImageGrid from '../components/ImageGrid';
+import BlogCardGrid from '../components/BlogCardGrid';
  
 import { ShopContext } from '../context/shopContext'
 import RichText from '../components/RichText';
@@ -107,8 +107,6 @@ const Home = () => {
         ))
         }
       </SimpleGrid>
-      <CallToAction />
-      <ImageGrid />
       <RichText 
         heading="Treat Yourself."
       />
@@ -123,6 +121,10 @@ const Home = () => {
         heading="Second Heading" 
         text="I'm baby kale chips twee skateboard tattooed, DIY iPhone ugh mixtape tumeric unicorn narwhal. Iceland shoreditch authentic, sartorial vegan twee flannel banh mi bushwick retro farm-to-table single-origin coffee."
       />
+      
+      <BlogCardGrid />
+      <ImageGrid />
+      
   </Box>
   )
 };
