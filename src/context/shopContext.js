@@ -63,9 +63,19 @@ export class ShopProvider extends Component {
     this.setState({products: products})
   }
 
+  fetchAllCollections = async () => {
+    const collections = await client.collection.fetchAllWithProducts();
+    this.setState({collections: collections})
+  }
+
   fetchProductWithHandle = async (handle) => {
     const product = await client.product.fetchByHandle(handle)
     this.setState({ product: product })
+  }
+
+  fetchCollectionWithHandle = async (handle) => {
+    const collection = await client.collection.fetchByHandle(handle)
+    this.setState({ collection: collection })
   }
 
   closeCart = () => { this.setState({isCartOpen: false}) }
@@ -83,7 +93,9 @@ export class ShopProvider extends Component {
             value={{ 
                 ...this.state, 
                 fetchAllProducts: this.fetchAllProducts,
+                fetchAllCollections: this.fetchAllCollections,
                 fetchProductWithHandle: this.fetchProductWithHandle,
+                fetchCollectionWithHandle: this.fetchCollectionWithHandle,
                 addItemToCheckout: this.addItemToCheckout,
                 removeLineItem: this.removeLineItem,
                 closeCart: this.closeCart,

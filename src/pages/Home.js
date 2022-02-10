@@ -4,6 +4,8 @@ import { Box, Button, Icon, LightMode, Stack, Text, SimpleGrid, Image, Flex, cha
 import ImageWithText from '../components/ImageWithText';
 import Hero from '../components/Hero';
 import { CollectionGrid } from '../components/CollectionGrid';
+import { ProductCard } from '../components/ProductCard'
+import { ProductGrid } from '../components/ProductGrid';
 import ImageGrid from '../components/ImageGrid';
 import BlogCardGrid from '../components/BlogCardGrid';
  
@@ -28,87 +30,36 @@ const Home = () => {
         heading="The relaxation you've been waiting for."
         text="Our Bath Bombs guarantee a fun, relaxing, and colorful night"
       />
-      <SimpleGrid columns={{md: 1, lg: 3}}>
-      {
-            products.map(product => (
-                <Box>
-                    <Link to={`/products/${product.handle}`} key={product.id}>
-                        
-                        <Flex
-                            direction="column"
-                            justifyContent="center"
-                            alignItems="center"
-                            w="sm"
-                            mx="auto"
-                            mb="2rem"
-                        >
-                            <Box
-                            bg="gray.300"
-                            h={64}
-                            w="full"
-                            rounded="lg"
-                            shadow="md"
-                            bgSize="cover"
-                            bgPos="center"
-                            >
-                                <Image src={product.images[0].src} />
-                            </Box>
-
-                            <Box
-                            w={{ base: 56, md: 64 }}
-                            bg="gray.800"
-                            mt={-10}
-                            shadow="lg"
-                            rounded="lg"
-                            overflow="hidden"
-                            >
-                            <chakra.h3
-                                py={2}
-                                textAlign="center"
-                                fontWeight="bold"
-                                textTransform="uppercase"
-                                color="white"
-                                letterSpacing={1}
-                            >
-                                {product.title}
-                            </chakra.h3>
-
-                            <Flex
-                                alignItems="center"
-                                justifyContent="space-between"
-                                py={2}
-                                px={3}
-                                bg="gray.700"
-                            >
-                                <chakra.span
-                                fontWeight="bold"
-                                color="gray.200"
-                                >
-                                ${product.variants[0].price}
-                                </chakra.span>
-                                <chakra.button
-                                bg="#FF38BD"
-                                fontSize="xs"
-                                fontWeight="bold"
-                                color="white"
-                                px={2}
-                                py={1}
-                                rounded="lg"
-                                textTransform="uppercase"
-                                _hover={{ opacity:"70%" }}
-                                >
-                                View Item
-                                </chakra.button>
-                            </Flex>
-                            </Box>
-                        </Flex>
-                        
-                        
-                    </Link>
-                </Box>
-        ))
-        }
-      </SimpleGrid>
+        <Box
+        maxW="5xl"
+        mx="auto"
+        px={{
+        base: '4',
+        md: '8',
+        lg: '12',
+        }}
+        py={{
+        base: '6',
+        md: '8',
+        lg: '12',
+        }}
+    >
+            <SimpleGrid
+            columns={{
+                base: 1,
+                sm: 2,
+                lg: 3,
+            }}
+            gap={{
+                base: '8',
+                lg: '12',
+            }}
+            >
+            {products.map((product) => (
+                <ProductCard key={product.id} product={product} />
+            ))}
+            </SimpleGrid>
+        </Box>
       <CollectionGrid />
       <RichText 
         heading="Treat Yourself."

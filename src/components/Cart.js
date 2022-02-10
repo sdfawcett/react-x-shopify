@@ -41,12 +41,10 @@ const Cart = () => {
           <DrawerBody>
             {
                 checkout.lineItems?.length ? checkout.lineItems.map(item => (
-                    <Grid templateColumns="repeat(4, 1fr)" gap={1} key={item.id}>
-                        <Flex alignItems="center" justifyContent="center">
-                            <CloseIcon cursor="pointer" onClick={() => removeLineItem(item.id)} />
-                        </Flex>
-                        <Flex alignItems="center" justifyContent="center">
-                            <Image src={item.variant.image.src} />
+                    <Grid templateColumns="repeat(4, 1fr)" gap={1} key={item.id} marginBottom="1rem">
+                        
+                        <Flex alignItems="center" justifyContent="center" paddingRight=".5rem">
+                            <Image src={item.variant.image.src} rounded="lg" />
                         </Flex>
                         <Flex alignItems="center" justifyContent="center">
                             <Text>
@@ -55,8 +53,11 @@ const Cart = () => {
                         </Flex>
                         <Flex alignItems="center" justifyContent="center">
                             <Text>
-                                {item.variant.price}
+                                ${item.variant.price}
                             </Text>
+                        </Flex>
+                        <Flex alignItems="center" justifyContent="center">
+                            <CloseIcon cursor="pointer" onClick={() => removeLineItem(item.id)} />
                         </Flex>
                     </Grid>
                 )) : 
